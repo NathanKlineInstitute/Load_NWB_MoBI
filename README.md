@@ -18,8 +18,7 @@ with NWBHDF5IO('path/to/nwb/file.nwb', 'r') as io:
 ```
 
 ## Location of Raw Data
-NWB files are basically stored like a list of dictionaries
-With fields such as **acquisition**, **devices**, and **electrodes**
+NWB files are basically stored like a list of dictionaries with fields such as **acquisition**, **devices**, and **electrodes**
 
 Acquisition holds all the raw data
 The syntax to open acquisition is

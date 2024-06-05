@@ -28,25 +28,31 @@ print(nwbfile.acquisition)
 ```
 ---
 From here you can access all of the raw data.
-The raw data is all stored as numpy arrays located in the acquisition dictionary
+
 There should be 12 datasets
 ```python
-with NWBHDF5IO(nwbfiles[2], 'r') as io:
+with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
     nwbfile = io.read()
     print(list(nwbfile.acquisition.keys()))
 ```
 `['ECG', 'EDA', 'EMG', 'ElectricalSeries', 'Eyetrack_Argus', 'Head_Location_Argus', 'Head_Rotation_Argus', 'Monitor_Eyetrack_Argus', 'Pupil_Diameters_Argus', 'RESPIRATION', 'StimLabels', 'allCSTdata']`
 
+Within each of these datasets there are different attributes.
+
+To get the raw data we use the `.data` attribute
+
 For example, to access the EEG data, we can use this syntax,
 ```python
 print(nwbfile.acquisition['ElectricalSeries'].data)
 ```
-You might see this output
+You might see this output,
 
 `<HDF5 dataset "data": shape (397540, 64), type "<f4">`
 
 This is the object that is loaded by pynwb that can be indexed.
 To load the entire array into memory, just use `[:]` at the end
+
+All raw data are stored as numpy arrays.
 
 ---
 ## Other Attributes

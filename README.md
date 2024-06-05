@@ -82,7 +82,7 @@ with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
     times = nwbfile.acquisition['allCSTdata'].timestamps[:]
     # Description for cst data holds all the headers
     headers = nwbfile.acquisition['allCSTdata'].description.split(',')
-    # The units for each column, not used in dataframe but can called for later use
+    # The units for each column, not used in dataframe but can be called for later use
     units = nwbfile.acquisition['allCSTdata'].unit.split(',')
 
 # Creating Dataframe

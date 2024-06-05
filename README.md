@@ -71,6 +71,9 @@ and the impedance of each electrode for each run in kohms.
 Since all of the cst data is loaded together, you can use the following snippet of code to load it
 into a pandas dataframe with the correct headers.
 ```python
+from pynwb import NWBHDF5IO
+import pandas as pd
+
 with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
         nwbfile = io.read()
         cst = nwbfile.acquisition['allCSTdata'].data[:]

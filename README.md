@@ -1,11 +1,12 @@
 # Reading NWB files
 
 ## Python libraries
-To read NWB files using python you must have the pynwb package
-See [here](https://pynwb.readthedocs.io/en/stable/install_users.html) for instructions on installing package
+To read NWB files using python you must have the pynwb package.
+
+See [here](https://pynwb.readthedocs.io/en/stable/install_users.html) for instructions on installing package.
 
 ## Opening the File in python
-To open the file in python you must first import NWBHDF5IO from the pynwb package
+To open the file in python you must first import NWBHDF5IO from the pynwb package.
 ```python
 from pynwb import NWBHDF5IO
 ```
@@ -18,7 +19,7 @@ with NWBHDF5IO('path/to/nwb/file.nwb', 'r') as io:
 ```
 
 ## Location of Raw Data
-NWB files are basically stored like a list of dictionaries with fields such as **acquisition**, **devices**, and **electrodes**
+NWB files are basically stored like a list of dictionaries with fields such as **acquisition**, **devices**, and **electrodes**.
 
 Acquisition holds all the raw data.
 
@@ -37,6 +38,8 @@ with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
 ```
 `['ECG', 'EDA', 'EMG', 'ElectricalSeries', 'Eyetrack_Argus', 'Head_Location_Argus', 'Head_Rotation_Argus', 'Monitor_Eyetrack_Argus', 'Pupil_Diameters_Argus', 'RESPIRATION', 'StimLabels', 'allCSTdata']`
 
+---
+
 Within each of these datasets there are different attributes.
 
 To get the raw data we use the `.data` attribute.
@@ -49,7 +52,7 @@ You might see this output,
 
 `<HDF5 dataset "data": shape (397540, 64), type "<f4">`
 
-This is the object that is loaded by pynwb that can be indexed.
+This is the object that is loaded by pynwb to be indexed.
 To load the entire array into memory, just use `[:]` at the end.
 
 All raw data are stored as numpy arrays.

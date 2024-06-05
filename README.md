@@ -30,7 +30,7 @@ print(nwbfile.acquisition)
 ---
 From here you can access all of the raw data.
 
-There should be 12 datasets.
+There should be 12 datasets for the cst NWB files.
 ```python
 with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
     nwbfile = io.read()

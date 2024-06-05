@@ -42,9 +42,12 @@ For example, to access the EEG data, we can use this syntax,
 print(nwbfile.acquisition['ElectricalSeries'].data)
 ```
 You might see this output
+
 `<HDF5 dataset "data": shape (397540, 64), type "<f4">`
+
 This is the object that is loaded by pynwb that can be indexed.
 To load the entire array into memory, just use `[:]` at the end
+
 ---
 ## Other Attributes
 There are other attributes within each dataset

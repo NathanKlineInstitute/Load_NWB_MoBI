@@ -75,13 +75,19 @@ from pynwb import NWBHDF5IO
 import pandas as pd
 
 with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
-        nwbfile = io.read()
-        cst = nwbfile.acquisition['allCSTdata'].data[:]
-        times = nwbfile.acquisition['allCSTdata'].timestamps[:]
-        headers = nwbfile.acquisition['allCSTdata'].description.split(',')
-        units = nwbfile.acquisition['allCSTdata'].unit.split(',')
+    nwbfile = io.read()
+    # Data Array
+    cst = nwbfile.acquisition['allCSTdata'].data[:]
+    # Timestamps for each data point
+    times = nwbfile.acquisition['allCSTdata'].timestamps[:]
+    # Description for cst data holds all the headers
+    headers = nwbfile.acquisition['allCSTdata'].description.split(',')
+    # The units for each column, not used in dataframe but can called for later use
+    units = nwbfile.acquisition['allCSTdata'].unit.split(',')
 
+# Creating Dataframe
 df = pd.DataFrame(cst, columns=headers)
+# Adding timestamps as a column
 df['times'] = times
 print(df)
 ```

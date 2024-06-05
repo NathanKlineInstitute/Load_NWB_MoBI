@@ -20,15 +20,16 @@ with NWBHDF5IO('path/to/nwb/file.nwb', 'r') as io:
 ## Location of Raw Data
 NWB files are basically stored like a list of dictionaries with fields such as **acquisition**, **devices**, and **electrodes**
 
-Acquisition holds all the raw data
-The syntax to open acquisition is
+Acquisition holds all the raw data.
+
+The syntax to open acquisition is,
 ```python
 print(nwbfile.acquisition)
 ```
 ---
 From here you can access all of the raw data.
 
-There should be 12 datasets
+There should be 12 datasets.
 ```python
 with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
     nwbfile = io.read()
@@ -38,7 +39,7 @@ with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
 
 Within each of these datasets there are different attributes.
 
-To get the raw data we use the `.data` attribute
+To get the raw data we use the `.data` attribute.
 
 For example, to access the EEG data, we can use this syntax,
 ```python
@@ -49,7 +50,7 @@ You might see this output,
 `<HDF5 dataset "data": shape (397540, 64), type "<f4">`
 
 This is the object that is loaded by pynwb that can be indexed.
-To load the entire array into memory, just use `[:]` at the end
+To load the entire array into memory, just use `[:]` at the end.
 
 All raw data are stored as numpy arrays.
 
@@ -65,7 +66,7 @@ and the impedance of each electrode for each run in kohms.
 
 ## CST data
 Since all of the cst data is loaded together, you can use the following snippet of code to load it
-into a pandas dataframe with the correct headers
+into a pandas dataframe with the correct headers.
 ```python
 with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
         nwbfile = io.read()

@@ -59,9 +59,9 @@ All raw data are stored as numpy arrays.
 
 ---
 ## Other Attributes
-There are other attributes within each dataset
-`.data` is just one of them
-`.timestamps` gives the timestamp of each data point
+There are other attributes within each dataset,
+`.data` is just one of them.
+`.timestamps` gives the timestamp of each data point.
 For the EEG data specifically, `.electrodes[:]`can be used to display 
 the entire table of electrodes detailing informations such as
 the general location of each electrode, the coordinates of the electrode in mm,

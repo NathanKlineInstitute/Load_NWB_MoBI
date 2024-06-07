@@ -18,19 +18,21 @@ with NWBHDF5IO('path/to/nwb/file.nwb', 'r') as io:
     print(nwbfile)
 ```
 
-## Location of Raw Data
+## Structure of NWB File
 NWB files are basically stored like a list of dictionaries with fields such as **acquisition**, **devices**, and **electrodes**.
 
-Acquisition holds all the raw data.
-
-The syntax to open acquisition is,
-```python
-print(nwbfile.acquisition)
-```
 ---
-From here you can access all of the raw data.
 
-There should be 12 datasets for the cst NWB files.
+### Acquisition
+`nwbfile.acquisition`
+
+Acquisition holds all the raw datasets.
+
+Each dataset then has additional attributes.
+
+Depending on the task, there are a varying amount of datasets
+
+For example, there are 12 datasets for the sample cst files:
 ```python
 with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
     nwbfile = io.read()
@@ -40,15 +42,155 @@ with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
 
 ---
 
-Within each of these datasets there are different attributes.
+### ElectricalSeries
+`nwbfile.acquisition['ElectricialSeries']`
 
-To get the raw data we use the `.data` attribute.
+The 'ElectricalSeries' dataset holds the information about the eeg data in microvolts.
 
-For example, to access the EEG data, we can use this syntax,
-```python
-print(nwbfile.acquisition['ElectricalSeries'].data)
-```
-You might see this output,
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+- `.electrodes` Stores table for detailed information about electrodes such as general location, coordinates, and impedances.
+
+### Eyetrack_Argus
+`nwbfile.acquisition['Eyetrack_Argus']`
+
+The 'Eyetrack_Argus' dataset holds information about the data collected from the argus eyetracker, specifically the position of the eye as it moves.
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+
+### Monitor_Eyetrack_Argus
+`nwbfile.acquisition['Monitor_Eyetrack_Argus']`
+
+The 'Monitor_Eyetrack_Argus' dataset holds information about the data collected from the argus eyetracker, specifically where the eye is looking at the monitor.
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+
+### Head_Location_Argus
+`nwbfile.acquisition['Head_Location_Argus']`
+
+The 'Head_Location_Argus' dataset holds information about the data collected from the argus eyetracker, specifically the coordinates in cm of the head as it moves in space.
+`0,0,0` is located at the tracker. +X is distance from monitor, +Y is Right, +Z is Down'
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+
+### Head_Rotation_Argus
+`nwbfile.acquisition['Head_Rotation_Argus']`
+
+The 'Head_Rotation_Argus' dataset holds information about the data collected from the argus eyetracker, specifically the rotation of the head as it moves in space.
+`-180,0,0` is the subject looking straight ahead at the monitor.
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+
+### Pupil_Diameters_Argus
+`nwbfile.acquisition['Pupil_Diameters_Argus']`
+
+The 'Pupil_Diameters_Argus' dataset holds information about the data collected from the argus eyetracker, specifically the diameter of the pupil
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+
+### ECG[^*]
+`nwbfile.acquisition['ECG']`
+
+The 'ECG' dataset holds information about electrocardiography data
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.units` the units the data uses
+
+### EDA[^*]
+`nwbfile.acquisition['EDA']`
+
+The 'EDA' dataset holds information about electrodermal data
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.units` the units the data uses
+
+### EMG[^*]
+`nwbfile.acquisition['EMG']`
+
+The 'EMG' dataset holds information about electromyography data
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.units` the units the data uses
+
+### RESPIRATION[^*]
+`nwbfile.acquisition['RESPIRATION']`
+
+The 'RESPIRATION' dataset holds information about respiration data
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.units` the units the data uses
+
+### Stimlabels
+`nwbfile.acquisition['StimLabels']`
+
+The 'StimLabels' dataset holds information about StimLabels
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+
+### allCSTdata
+`nwbfile.acquisition['allCSTdata']`
+
+The 'allCSTdata' dataset holds information about CST data
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+- `.units` this holds the units for each column as a string
+
+### allOpenSignalsData
+`nwbfile.acquisition['allOpenSignalsData']`
+
+The 'allOpenSignalsData' dataset holds information about general biological data
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+- `.units` this holds the units for each column as a string
+
+### Mindlogger
+`nwbfile.acquisition['Mindlogger']`
+
+The 'Mindlogger' dataset holds information about MindLogger data
+
+The relavent attributes this dataset has are:
+- `.data` this holds all the raw data
+- `.timestamps` this holds all the timestamps
+- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+
+---
+
+## Loading Data
+
+You might see this output when loading `.data`,
 
 `<HDF5 dataset "data": shape (397540, 64), type "<f4">`
 
@@ -58,18 +200,11 @@ To load the entire array into memory, just use `[:]` at the end.
 All raw data are stored as numpy arrays.
 
 ---
-## Other Attributes
-There are other attributes within each dataset,
-`.data` is just one of them.
-`.timestamps` gives the timestamp of each data point.
-For the EEG data specifically, `.electrodes[:]`can be used to display 
-the entire table of electrodes detailing informations such as
-the general location of each electrode, the coordinates of the electrode in mm,
-and the impedance of each electrode for each run in kohms.
 
-## CST data
-Since all of the cst data is loaded together, you can use the following snippet of code to load it
-into a pandas dataframe with the correct headers.
+## Creating pandas dataframe from data
+
+Since some data is loaded together with column headers in the description, you can create a pandas dataframe with everything provided.
+For example, here is a snippet of code to turn 'allCSTdata' into a pandas dataframe:
 ```python
 from pynwb import NWBHDF5IO
 import pandas as pd
@@ -97,3 +232,5 @@ For more information the pynwb documentation can be found [here](https://pynwb.r
 
 ## NWB Documentation
 For more information about the NWB file format, the documentation can be found [here](https://nwb-overview.readthedocs.io/en/latest/index.html)
+
+[^*]: only in initial 19 sample CST nwb files, later files have this data stored collectively in 'allOpenSignalsData'

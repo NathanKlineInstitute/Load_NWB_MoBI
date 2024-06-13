@@ -192,5 +192,3 @@ For more information the pynwb documentation can be found [here](https://pynwb.r
 
 ## NWB Documentation
 For more information about the NWB file format, the documentation can be found [here](https://nwb-overview.readthedocs.io/en/latest/index.html)
-
-[^*]: only in initial 19 sample CST nwb files, later files have this data stored collectively in 'allOpenSignalsData'

@@ -32,13 +32,13 @@ Each dataset then has additional attributes.
 
 Depending on the task, there are a varying amount of datasets
 
-For example, there are 12 datasets for the sample cst files:
+For example, there are 9 datasets for the sample cst files:
 ```python
 with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
     nwbfile = io.read()
     print(list(nwbfile.acquisition.keys()))
 ```
-`['ECG', 'EDA', 'EMG', 'ElectricalSeries', 'Eyetrack_Argus', 'Head_Location_Argus', 'Head_Rotation_Argus', 'Monitor_Eyetrack_Argus', 'Pupil_Diameters_Argus', 'RESPIRATION', 'StimLabels', 'allCSTdata']`
+`['ElectricalSeries', 'Eyetrack_Argus', 'Head_Location_Argus', 'Head_Rotation_Argus', 'Monitor_Eyetrack_Argus', 'Pupil_Diameters_Argus', 'StimLabels', 'allCSTdata', 'allOpenSignalsData']`
 
 ---
 
@@ -104,46 +104,6 @@ The relavent attributes this dataset has are:
 - `.data` this holds all the raw data
 - `.timestamps` this holds all the timestamps
 - `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
-
-### ECG[^*]
-`nwbfile.acquisition['ECG']`
-
-The 'ECG' dataset holds information about electrocardiography data
-
-The relavent attributes this dataset has are:
-- `.data` this holds all the raw data
-- `.timestamps` this holds all the timestamps
-- `.units` the units the data uses
-
-### EDA[^*]
-`nwbfile.acquisition['EDA']`
-
-The 'EDA' dataset holds information about electrodermal data
-
-The relavent attributes this dataset has are:
-- `.data` this holds all the raw data
-- `.timestamps` this holds all the timestamps
-- `.units` the units the data uses
-
-### EMG[^*]
-`nwbfile.acquisition['EMG']`
-
-The 'EMG' dataset holds information about electromyography data
-
-The relavent attributes this dataset has are:
-- `.data` this holds all the raw data
-- `.timestamps` this holds all the timestamps
-- `.units` the units the data uses
-
-### RESPIRATION[^*]
-`nwbfile.acquisition['RESPIRATION']`
-
-The 'RESPIRATION' dataset holds information about respiration data
-
-The relavent attributes this dataset has are:
-- `.data` this holds all the raw data
-- `.timestamps` this holds all the timestamps
-- `.units` the units the data uses
 
 ### Stimlabels
 `nwbfile.acquisition['StimLabels']`

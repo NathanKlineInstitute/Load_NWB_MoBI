@@ -54,7 +54,7 @@ The relavent attributes this dataset has are:
 - `.electrodes` Stores table for detailed information about electrodes such as general location, coordinates, and impedances.
 
 ### Eyetrack_Argus
-`nwbfile.acquisition['Eyetrack_Argus']`
+`nwbfile.acquisition['Eyetrack_Argus'].spatial_series`
 
 The 'Eyetrack_Argus' dataset holds information about the data collected from the argus eyetracker, specifically the position of the eye as it moves.
 
@@ -64,7 +64,7 @@ The relavent attributes this dataset has are:
 - `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
 
 ### Monitor_Eyetrack_Argus
-`nwbfile.acquisition['Monitor_Eyetrack_Argus']`
+`nwbfile.acquisition['Monitor_Eyetrack_Argus'].spatial_series`
 
 The 'Monitor_Eyetrack_Argus' dataset holds information about the data collected from the argus eyetracker, specifically where the eye is looking at the monitor.
 
@@ -74,7 +74,7 @@ The relavent attributes this dataset has are:
 - `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
 
 ### Head_Location_Argus
-`nwbfile.acquisition['Head_Location_Argus']`
+`nwbfile.acquisition['Head_Location_Argus'].spatial_series`
 
 The 'Head_Location_Argus' dataset holds information about the data collected from the argus eyetracker, specifically the coordinates in cm of the head as it moves in space.
 `0,0,0` is located at the tracker. +X is distance from monitor, +Y is Right, +Z is Down'

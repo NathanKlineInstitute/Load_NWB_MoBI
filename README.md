@@ -61,8 +61,7 @@ The 'Eyetrack_Argus' dataset holds information about the data collected from the
 The relavent attributes this dataset has are:
 - `.data` this holds all the raw data
 - `.timestamps` this holds all the timestamps
-- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
-
+- `.description` Description of spatial series
 ### Monitor_Eyetrack_Argus
 `nwbfile.acquisition['Monitor_Eyetrack_Argus'].spatial_series['Monitor_Eyetrack_Argus']`
 
@@ -71,7 +70,7 @@ The 'Monitor_Eyetrack_Argus' dataset holds information about the data collected 
 The relavent attributes this dataset has are:
 - `.data` this holds all the raw data
 - `.timestamps` this holds all the timestamps
-- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+- `.description` Description of spatial series
 
 ### Head_Location_Argus
 `nwbfile.acquisition['Head_Location_Argus'].spatial_series['Head_Location_Argus']`
@@ -82,7 +81,7 @@ The 'Head_Location_Argus' dataset holds information about the data collected fro
 The relavent attributes this dataset has are:
 - `.data` this holds all the raw data
 - `.timestamps` this holds all the timestamps
-- `.description` this holds the column headers as a string. Split string by ',' to get as a list for use in pandas dataframe
+- `.description` Description of spatial series
 
 ### Head_Rotation_Argus
 `nwbfile.acquisition['Head_Rotation_Argus']`

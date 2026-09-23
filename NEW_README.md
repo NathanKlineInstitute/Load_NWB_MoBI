@@ -112,20 +112,18 @@ import pandas as pd
 
 with NWBHDF5IO('/path/to/nwb/file.nwb', 'r') as io:
     nwbfile = io.read()
+    streams = list(nwbfile.acquisition.keys())
     # Data Array
-    cst = nwbfile.acquisition['allCSTdata'].data[:]
-    # Timestamps for each data point
-    times = nwbfile.acquisition['allCSTdata'].timestamps[:]
-    # Description for cst data holds all the headers
-    headers = nwbfile.acquisition['allCSTdata'].description.split(',')
-    # The units for each column, not used in dataframe but can be called for later use
-    units = nwbfile.acquisition['allCSTdata'].unit.split(',')
+    if 'Argus_Eye_Tracker' in streams:
+        argus_stream = nwbfile.acquisition['Argus_Eye_Tracker']
+        argus_data = argus_stream.data[:]
+        argus_timestamps = argus_stream.timestamps[:]
+        argus_headers = argus_stream.description.split(',')
 
-# Creating Dataframe
-df = pd.DataFrame(cst, columns=headers)
-# Adding timestamps as a column
-df['times'] = times
-print(df)
+        df = pd.DataFrame(argus_data, columns=argus_headers)
+        df['times'] = argus_timestamps
+        print(df)
+
 ```
 
 ## pynwb Documentation
